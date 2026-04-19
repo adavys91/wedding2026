@@ -5,76 +5,110 @@
     <meta charset="UTF-8">
     <title>Wedding on Agárd 2026</title>
     <style>
-    * {
-        box-sizing: border-box;
-    }
+* {
+    box-sizing: border-box;
+}
 
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: #f7f7f7;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-    }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #FFF8EC;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: #546B41;
+}
 
-    header {
-        padding: 20px;
-        font-size: 22px;
-        font-weight: bold;
-        text-align: center;
-    }
+/* HEADER */
+header {
+    padding: 22px;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    background: #DCCCAC;
+    color: #546B41;
+    letter-spacing: 1px;
+}
 
-    .container {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 12px;
-        padding: 20px;
-    }
+/* HOME LAYOUT */
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    padding: 20px;
+}
 
-    button {
-        width: 90%;
-        max-width: 320px;
-        padding: 14px;
-        font-size: 18px;
-        border: none;
-        border-radius: 12px;
-        background: #222;
-        color: white;
-    }
+/* GOMBOK */
+button {
+    width: 90%;
+    max-width: 340px;
+    padding: 14px;
+    font-size: 18px;
+    border: none;
+    border-radius: 14px;
+    background: #99AD7A;
+    color: #FFF8EC;
+    font-weight: bold;
+    transition: 0.2s;
+}
 
-    button:hover {
-        background: #444;
-    }
+button:hover {
+    background: #546B41;
+}
 
-    .page {
-        display: none;
-        flex: 1;
-        padding: 10px;
-        text-align: center;
-    }
+/* OLDALAK */
+.page {
+    display: none;
+    flex: 1;
+    padding: 16px;
+    text-align: center;
+}
 
-    .active {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-    img {
-        width: 100%;
-        max-width: 900px;
-        height: auto;
-        margin-top: 15px;
-        border-radius: 10px;
-    }
+/* SZÖVEG */
+h2 {
+    color: #546B41;
+    margin-bottom: 10px;
+}
 
-    .back {
-        margin-top: 20px;
-        background: #888;
-    }
+/* KÉPEK (TÉRKÉP + ITALLAP + SZOBÁK) */
+img {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    margin-top: 15px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(84, 107, 65, 0.25);
+    border: 3px solid #DCCCAC;
+}
+
+/* BACK GOMB */
+.back {
+    margin-top: 20px;
+    background: #546B41;
+}
+.back:hover {
+    background: #3f4f30;
+}
+
+/* MENETREND */
+p {
+    background: #DCCCAC;
+    padding: 16px;
+    border-radius: 14px;
+    color: #546B41;
+    max-width: 500px;
+    line-height: 1.6;
+    box-shadow: 0 8px 20px rgba(84, 107, 65, 0.15);
+}
 </style>
 </head>
 <body>
