@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>Wedding on Agárd 2026</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            background-color: #f7f7f7;
+        }
+
+        header {
+            padding: 30px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .container {
+            margin-top: 40px;
+        }
+
+        button {
+            display: block;
+            width: 250px;
+            margin: 15px auto;
+            padding: 15px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        .page {
+            display: none;
+            padding: 20px;
+        }
+
+        .active {
+            display: block;
+        }
+
+        img {
+            max-width: 90%;
+            height: auto;
+            margin-top: 20px;
+        }
+
+        .back {
+            margin-top: 20px;
+            background-color: #999;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    Wedding on Agárd 2026<br>
+    Anita x Dávid
+</header>
+
+<div id="home" class="container page active">
+    <button onclick="navigate('map')">Térkép</button>
+    <button onclick="navigate('schedule')">Menetrend</button>
+    <button onclick="navigate('drinks')">Itallap</button>
+    <button onclick="navigate('rooms')">Szobabeosztás</button>
+</div>
+
+<!-- TÉRKÉP -->
+<div id="map" class="page">
+    <h2>Térkép</h2>
+    <img src="terkep.png" alt="Térkép">
+    <button class="back" onclick="navigate('home')">Vissza</button>
+</div>
+
+<!-- MENETREND -->
+<div id="schedule" class="page">
+    <h2>Menetrend</h2>
+    <p>
+        15:00 - Érkezés<br>
+        16:00 - Szertartás<br>
+        17:00 - Gratulációk, fotózás<br>
+        18:30 - Vacsora<br>
+        20:00 - Játékok<br>
+        21:00 - Torta<br>
+        22:00 - Buli hajnalig 🎉
+    </p>
+    <button class="back" onclick="navigate('home')">Vissza</button>
+</div>
+
+<!-- ITALLAP -->
+<div id="drinks" class="page">
+    <h2>Itallap</h2>
+    <img src="itallap.png" alt="Itallap">
+    <button class="back" onclick="navigate('home')">Vissza</button>
+</div>
+
+<!-- SZOBABEosztás -->
+<div id="rooms" class="page">
+    <h2>Szobabeosztás</h2>
+    <img src="szobak.png" alt="Szobabeosztás">
+    <button class="back" onclick="navigate('home')">Vissza</button>
+</div>
+
+<script>
+    function navigate(pageId) {
+        const pages = document.querySelectorAll('.page');
+        pages.forEach(p => p.classList.remove('active'));
+
+        document.getElementById(pageId).classList.add('active');
+    }
+</script>
+
+</body>
+</html>
