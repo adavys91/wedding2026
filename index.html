@@ -45,25 +45,38 @@ header {
 .tile {
     position: relative;
     height: 220px;
+    width: 100%;
     border-radius: 22px;
     overflow: hidden;
     cursor: pointer;
     box-shadow: 0 10px 25px rgba(84, 107, 65, 0.25);
-    transition: transform 0.2s ease;
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        filter 0.15s ease;
+
+    background: #000;
 }
 
+/* HOVER (desktop) */
 .tile:hover {
     transform: scale(1.03);
+    box-shadow: 0 14px 30px rgba(84, 107, 65, 0.35);
+}
+
+/* TAP / LENYOMÁS */
+.tile:active {
+    transform: scale(0.96);
+    filter: brightness(0.9);
+    box-shadow: 0 4px 12px rgba(84, 107, 65, 0.2);
 }
 
 .tile img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    margin: 0;
-    border: none;
-    border-radius: 22px;
-    box-shadow: none;
+    object-position: center;
+    display: block;
 }
 
 /* SÖTÉT OVERLAY */
@@ -74,16 +87,16 @@ header {
     background: rgba(0,0,0,0.25);
 }
 
-/* SZÖVEG */
+/* CSEMPE SZÖVEG */
 .tile-title {
     position: absolute;
-    bottom: 16px;
-    left: 16px;
+    bottom: 18px;
+    left: 18px;
     z-index: 2;
-    color: #FFF8EC;
-    font-size: 22px;
+    color: white;
+    font-size: 28px;
     font-weight: bold;
-    text-shadow: 0 3px 10px rgba(0,0,0,0.4);
+    text-shadow: 0 4px 12px rgba(0,0,0,0.6);
 }
 
 /* MOBIL */
@@ -187,7 +200,7 @@ p {
     </div>
 
     <div class="tile" onclick="navigate('drinks')">
-        <img src="italok.jpg" alt="Itallap">
+    <img src="italok.jpg" alt="Itallap" style="object-position:center top;">
         <div class="tile-title">🍸 Itallap</div>
     </div>
 
