@@ -123,17 +123,14 @@ body::before {
 }
 
 @media (max-width: 600px) {
- .tile-grid {
-    display: grid;
+  .tile-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+    gap: 12px;
+  }
 
-    width: 100%;
-    max-width: 900px;
-
-    margin: 0 auto;
-    padding: 16px 18px 32px;
-}
+  .tile-label .tile-name {
+    font-size: 18px;
+  }
 }
 
 .tile {
