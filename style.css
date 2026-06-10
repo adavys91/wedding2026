@@ -1,0 +1,550 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #f5ede0;
+  min-height: 100vh;
+  font-family: 'Josefin Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+.bg-texture {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 10%, rgba(210,160,100,0.18) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(180,130,90,0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(245,220,190,0.2) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── PAGES ── */
+.page {
+  display: none;
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+.page.active { display: block; }
+
+/* ── MAIN PAGE ── */
+.container {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+}
+
+header {
+  text-align: center;
+  padding: 48px 0 36px;
+}
+
+.header-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.ornament-line {
+  height: 1px;
+  width: 60px;
+  background: linear-gradient(to right, transparent, #a07840);
+}
+.ornament-line.right {
+  background: linear-gradient(to left, transparent, #a07840);
+}
+
+.ornament-diamond {
+  width: 6px;
+  height: 6px;
+  background: #a07840;
+  transform: rotate(45deg);
+}
+
+.header-year {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #a07840;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.header-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 38px;
+  line-height: 1.15;
+  color: #3d2b1f;
+  font-weight: 400;
+}
+
+.header-title .and {
+  font-style: italic;
+  color: #a07840;
+  font-size: 32px;
+}
+
+.header-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: #8b6e50;
+  text-transform: uppercase;
+  margin-top: 12px;
+}
+
+.header-bottom-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.dot-ornament { display: flex; gap: 4px; align-items: center; }
+.dot { width: 3px; height: 3px; border-radius: 50%; background: #c4a06a; }
+.dot.big { width: 5px; height: 5px; }
+
+.cards-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(80,50,20,0.12), 0 0 0 1px rgba(160,120,64,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #fff9f2;
+}
+
+.card:active { transform: scale(0.98); }
+
+.card-image-wrap {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.card:hover .card-image-wrap img { transform: scale(1.04); }
+
+.card-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, rgba(40,20,5,0.45) 100%);
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  border-top: 1px solid rgba(160,120,64,0.18);
+}
+
+.card-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: #3d2b1f;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.card-icon-wrap {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(160,120,64,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-icon-wrap svg {
+  width: 18px;
+  height: 18px;
+  stroke: #a07840;
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.card-accent-bar {
+  height: 3px;
+  background: linear-gradient(to right, #c4a06a, #e8c98a, #c4a06a);
+}
+
+.footer-note {
+  text-align: center;
+  margin-top: 36px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: #a07840;
+  letter-spacing: 1px;
+}
+
+/* ── SUBPAGE COMMON ── */
+.subpage-inner {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 20px 48px;
+}
+
+.subpage-nav {
+  display: flex;
+  align-items: center;
+  padding: 20px 0 0;
+  gap: 12px;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #a07840;
+  padding: 8px 0;
+}
+
+.back-btn svg {
+  width: 16px;
+  height: 16px;
+  stroke: #a07840;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+.subpage-header {
+  text-align: center;
+  padding: 24px 0 32px;
+}
+
+.subpage-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  color: #3d2b1f;
+  font-weight: 400;
+}
+
+.subpage-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.subpage-divider .ornament-line { width: 50px; }
+
+/* ── TÉRKÉP ALOLDAL ── */
+.map-placeholder {
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(80,50,20,0.15), 0 0 0 1px rgba(160,120,64,0.2);
+  background: #e8ddd0;
+  aspect-ratio: 4/3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+}
+
+.map-frame {
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(40, 80, 25, 0.12);
+}
+
+.map-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.map-frame iframe {
+  display: block;
+  width: 100%;
+  height: 340px;
+  border: none;
+}
+
+.map-address-card {
+  margin-top: 16px;
+  background: #fff9f2;
+  border-radius: 4px;
+  border: 1px solid rgba(160,120,64,0.25);
+  padding: 18px 20px;
+  box-shadow: 0 1px 4px rgba(80,50,20,0.08);
+}
+
+.map-address-label {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #a07840;
+  margin-bottom: 8px;
+}
+
+.map-address-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: #3d2b1f;
+  margin-bottom: 4px;
+}
+
+.map-address-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  color: #8b6e50;
+  line-height: 1.5;
+}
+
+.map-open-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+  width: 100%;
+  padding: 13px;
+  background: none;
+  border: 1px solid rgba(160,120,64,0.45);
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #a07840;
+  transition: background 0.2s;
+  text-decoration: none;
+}
+
+.map-open-btn:hover { background: rgba(160,120,64,0.07); }
+
+.map-open-btn svg {
+  width: 14px; height: 14px;
+  stroke: #a07840; fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ── MENETREND ── */
+.timeline {
+  position: relative;
+  padding-left: 28px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, #c4a06a 10%, #c4a06a 90%, transparent);
+}
+
+.timeline-item {
+  position: relative;
+  padding: 0 0 32px 24px;
+}
+
+.timeline-item:last-child { padding-bottom: 0; }
+
+.timeline-dot {
+  position: absolute;
+  left: -22px;
+  top: 6px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #f5ede0;
+  border: 1.5px solid #c4a06a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline-dot::after {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #a07840;
+}
+
+.timeline-time {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #a07840;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.timeline-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: #3d2b1f;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.timeline-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: #8b6e50;
+  margin-top: 2px;
+}
+
+/* ── ITALOK / SZOBABEOSZTÁS ── */
+.drinks-section {
+  margin-bottom: 28px;
+}
+
+.drinks-section-title {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 10px;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  color: #a07840;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.drinks-section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, rgba(160,120,64,0.4), transparent);
+}
+
+.drinks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.drink-item {
+  background: #fff9f2;
+  border: 1px solid rgba(160,120,64,0.18);
+  border-radius: 3px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.drink-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  color: #3d2b1f;
+  font-weight: 400;
+}
+
+.drink-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: #a07840;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* szoba grid */
+.rooms-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.room-card {
+  background: #fff9f2;
+  border: 1px solid rgba(160,120,64,0.22);
+  border-radius: 4px;
+  padding: 16px 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+.room-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, #c4a06a, #e8c98a);
+}
+
+.room-number {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #a07840;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.room-guests {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.room-guest {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  color: #3d2b1f;
+  line-height: 1.3;
+}
+
+.room-guest.soft { color: #8b6e50; font-style: italic; }
+
+.rooms-note {
+  margin-top: 20px;
+  padding: 16px 18px;
+  background: rgba(160,120,64,0.07);
+  border-radius: 3px;
+  border-left: 2px solid #c4a06a;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: #8b6e50;
+  line-height: 1.6;
+}
