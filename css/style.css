@@ -550,3 +550,42 @@ header {
   color: #8b6e50;
   line-height: 1.6;
 }
+
+.upload-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 18px 20px;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, #c4a06a, #a07840);
+  border-radius: 4px;
+  text-decoration: none;
+  box-shadow: 0 3px 10px rgba(160,120,64,0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.upload-btn:active {
+  transform: scale(0.98);
+}
+
+.upload-btn svg {
+  width: 20px;
+  height: 20px;
+  stroke: #fff9f2;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+.upload-btn span {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #fff9f2;
+  font-weight: 400;
+}
