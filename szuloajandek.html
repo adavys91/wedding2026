@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<title>Szülőajándék Utalvány</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  html, body {
+    background: #f5ede0;
+    width: 210mm;
+    height: 297mm;
+  }
+
+  body {
+    font-family: 'Josefin Sans', sans-serif;
+    position: relative;
+  }
+
+  .bg-texture {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+      radial-gradient(ellipse at 20% 10%, rgba(210,160,100,0.18) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(180,130,90,0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(245,220,190,0.2) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .poster {
+    position: relative;
+    z-index: 1;
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16mm 18mm;
+    text-align: center;
+  }
+
+  /* ── HEADER / LOGÓ ── */
+  .header-ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+
+  .ornament-line {
+    height: 1px;
+    width: 70px;
+    background: linear-gradient(to right, transparent, #a07840);
+  }
+  .ornament-line.right {
+    background: linear-gradient(to left, transparent, #a07840);
+  }
+
+  .ornament-diamond {
+    width: 7px;
+    height: 7px;
+    background: #a07840;
+    transform: rotate(45deg);
+  }
+
+  .header-year {
+    font-size: 13px;
+    letter-spacing: 5px;
+    color: #a07840;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    line-height: 1.15;
+    color: #3d2b1f;
+    font-weight: 400;
+  }
+
+  .header-title .and {
+    font-style: italic;
+    color: #a07840;
+    font-size: 42px;
+  }
+
+  .header-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    letter-spacing: 4px;
+    color: #8b6e50;
+    text-transform: uppercase;
+    margin-top: 12px;
+  }
+
+  .dot-ornament {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 16px;
+  }
+  .dot { width: 4px; height: 4px; border-radius: 50%; background: #c4a06a; }
+  .dot.big { width: 7px; height: 7px; }
+
+  /* ── MEGSZÓLÍTÁS ── */
+  .voucher-salutation {
+    margin-top: 28px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 24px;
+    color: #3d2b1f;
+  }
+
+  /* ── FŐ SZÖVEG ── */
+  .poster-body {
+    margin-top: 18px;
+    max-width: 150mm;
+  }
+
+  .poster-instruction {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    line-height: 1.55;
+    color: #5a4530;
+  }
+
+  .poster-instruction.emphasis {
+    margin-top: 14px;
+    font-style: italic;
+    font-size: 17px;
+    color: #a07840;
+  }
+
+  .poster-instruction.emphasis .caps {
+    font-style: normal;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+
+  /* ── QR KERET ── */
+  .qr-wrap {
+    margin-top: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .qr-frame {
+    width: 58mm;
+    height: 58mm;
+    background: #fff9f2;
+    border-radius: 6px;
+    box-shadow: 0 4px 18px rgba(80,50,20,0.18), 0 0 0 1px rgba(160,120,64,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .qr-frame::before {
+    content: '';
+    position: absolute;
+    top: 8px; left: 8px; right: 8px; bottom: 8px;
+    border: 1px dashed rgba(160,120,64,0.35);
+    border-radius: 4px;
+  }
+
+  .qr-frame .qr-placeholder-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c4a06a;
+  }
+
+  .qr-caption {
+    margin-top: 14px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: #8b6e50;
+    max-width: 110mm;
+    line-height: 1.5;
+  }
+
+  /* ── PROGRAM LISTA ── */
+  .voucher-list-title {
+    margin-top: 24px;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: #3d2b1f;
+  }
+
+  .voucher-list {
+    margin-top: 14px;
+    list-style: none;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: left;
+  }
+
+  .voucher-list li {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    color: #5a4530;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  .voucher-list li::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    background: #c4a06a;
+    transform: rotate(45deg);
+    flex-shrink: 0;
+    position: relative;
+    top: -2px;
+  }
+
+  /* ── ALÁÍRÁS ── */
+  .voucher-signoff {
+    margin-top: 26px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: #8b6e50;
+  }
+
+  .voucher-names {
+    margin-top: 6px;
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: #3d2b1f;
+  }
+
+  .voucher-names .and {
+    font-style: italic;
+    color: #a07840;
+  }
+
+  .bottom-ornament {
+    margin-top: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .bottom-ornament .ornament-line { width: 50px; }
+
+</style>
+</head>
+<body>
+
+<div class="bg-texture"></div>
+
+<div class="poster">
+
+  <!-- HEADER / LOGÓ -->
+  <div class="header-ornament">
+    <div class="ornament-line"></div>
+    <div class="ornament-diamond"></div>
+    <div class="ornament-line right"></div>
+  </div>
+  <p class="header-year">2026 · Agárd</p>
+  <h1 class="header-title">
+    Anita <span class="and">&amp;</span> Dávid
+  </h1>
+  <p class="header-subtitle">Szülőajándék Utalvány</p>
+  <div class="dot-ornament">
+    <div class="dot"></div>
+    <div class="dot big"></div>
+    <div class="dot"></div>
+  </div>
+
+  <!-- MEGSZÓLÍTÁS -->
+  <p class="voucher-salutation">Kedves Szülőnk!</p>
+
+  <!-- FŐ SZÖVEG -->
+  <div class="poster-body">
+    <p class="poster-instruction">
+      Fogadjátok tőlünk szeretettel ezt a kis ajándékot esküvőnk alkalmából.
+      Ezzel is szeretnénk meghálálni mindazt, amit tettetek értünk,
+      hogy támogattatok végig az utunkon, egészen odáig, hogy most itt
+      állhatunk életünk egyik legkülönlegesebb napján.
+    </p>
+    <p class="poster-instruction emphasis">
+      Nélkületek <span class="caps">EGÉSZEN BIZTOSAN</span> nem jöhetett volna ez létre!
+    </p>
+  </div>
+
+  <!-- QR KERET -->
+  <div class="qr-wrap">
+    <div class="qr-frame">
+      <span class="qr-placeholder-label">QR kód helye</span>
+    </div>
+    <p class="qr-caption">
+      Olvasd be a telefonoddal ezt a kódot,<br>
+      és nézd meg, hova megyünk közös kalandra!
+    </p>
+  </div>
+
+  <!-- PROGRAM LISTA -->
+  <p class="voucher-list-title">Hogy mi várható?</p>
+  <ul class="voucher-list">
+    <li>Egész napos kirándulás</li>
+    <li>A nevezetesség megtekintésével</li>
+    <li>Ebéd-kávé-süti</li>
+    <li>Felhőtlen szórakozás</li>
+  </ul>
+
+  <!-- ALÁÍRÁS -->
+  <p class="voucher-signoff">Szeretettel:</p>
+  <p class="voucher-names">Anita <span class="and">&amp;</span> Dávid</p>
+
+  <div class="bottom-ornament">
+    <div class="ornament-line"></div>
+    <div class="ornament-diamond"></div>
+    <div class="ornament-line right"></div>
+  </div>
+
+</div>
+
+</body>
+</html>
